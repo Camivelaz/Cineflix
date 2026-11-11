@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlix | Vive el cine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+
+<body>
+
+<header class="barra">
+    <a class="logo" href="{{ url_for('reserva') }}">CINE<span>FLIX</span> ✦</a>
+
+    <nav>
+        <a href="#inicio">Inicio</a>
+        <a href="#cartelera">Cartelera</a>
+        <a href="#reservar">Reservar</a>
+        <a href="{{ url_for('listado') }}">Mis boletos</a>
+    </nav>
+</header>
+
+<section class="hero" id="inicio">
+    <div class="hero-contenido">
+        <span class="etiqueta">✦ TU EXPERIENCIA COMIENZA AQUÍ</span>
+        <h1>EL CINE SE<br>VIVE EN <span>GRANDE.</span></h1>
+        <p>Prepara las palomitas, elige tu película favorita y disfruta una experiencia increíble.</p>
+        <a class="boton-principal" href="#cartelera">Explorar películas ↗</a>
+    </div>
+
+    <div class="hero-decoracion">
+        <div class="circulo">🎬</div>
+        <span>LIGHTS</span>
+        <span class="texto-vertical">CAMERA · ACTION</span>
+    </div>
+</section>
+
+<main>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% if mensajes %}
+            {% for categoria, texto in mensajes %}
+                <div class="alerta {{ categoria }}">{{ texto }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if errores %}
+        <div class="alerta error">
+            {% for error in errores %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <section class="seccion" id="cartelera">
+        <div class="titulo-seccion">
+            <div>
+                <span class="etiqueta">DESCUBRE TU PRÓXIMA HISTORIA</span>
+                <h2>En cartelera <span>✦</span></h2>
+            </div>
+            <p>Elige tu favorita</p>
+        </div>
+
+        <div class="peliculas">
+
+            <article class="pelicula-card">
+                <div class="poster poster-uno">
+                    <span class="numero">01</span>
+                    <span class="emoji-poster">😊</span>
+                    <h3>INTENSAMENTE 2</h3>
+                    <span class="tipo">ANIMACIÓN</span>
+                </div>
+                <p>Una aventura llena de emociones.</p>
+            </article>
+
+            <article class="pelicula-card">
+                <div class="poster poster-dos">
+                    <span class="numero">02</span>
+                    <span class="emoji-poster">🌼</span>
+                    <h3>COCO</h3>
+                    <span class="tipo">AVENTURA</span>
+                </div>
+                <p>Una historia sobre familia y recuerdos.</p>
+            </article>
+
+            <article class="pelicula-card">
+                <div class="poster poster-tres">
+                    <span class="numero">03</span>
+                    <span class="emoji-poster">🔥</span>
+                    <h3>ELEMENTOS</h3>
+                    <span class="tipo">FANTASÍA</span>
+                </div>
+                <p>Los elementos tienen mucho que contar.</p>
+            </article>
+
+            <article class="pelicula-card">
+                <div class="poster poster-cuatro">
+                    <span class="numero">04</span>
+                    <span class="emoji-poster">🤖</span>
+                    <h3>ROBOT SALVAJE</h3>
+                    <span class="tipo">FAMILIAR</span>
+                </div>
+                <p>Una aventura inesperada en la naturaleza.</p>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="reserva-seccion" id="reservar">
+
+        <div class="reserva-info">
+            <span class="etiqueta">HAZ TU RESERVACIÓN</span>
+            <h2>Tu asiento,<br>tu momento. <span>🍿</span></h2>
+            <p>Completa tus datos y prepárate para disfrutar de la magia del cine.</p>
+
+            <div class="beneficio">
+                <span>✦</span>
+                <div>
+                    <strong>Fácil y rápido</strong>
+                    <p>Reserva tus boletos en pocos pasos.</p>
+                </div>
+            </div>
+
+            <div class="beneficio">
+                <span>✦</span>
+                <div>
+                    <strong>Elige tu experiencia</strong>
+                    <p>Contamos con salas tradicionales, VIP y 3D.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="formulario-card">
+            <h2>🎟️ Nueva reservación</h2>
+            <p class="subtitulo">Llena los siguientes campos</p>
+
+            <form method="POST" action="{{ url_for('reserva') }}">
+
+                <label>Nombre del cliente</label>
+                <input type="text" name="nombre"
+                value="{{ form_data.get('nombre', '') }}"
+                placeholder="Escribe tu nombre" required>
+
+                <label>Película</label>
+                <select name="pelicula" required>
+                    <option value="">Selecciona una película</option>
+                    <option value="Intensamente 2">Intensamente 2</option>
+                    <option value="Coco">Coco</option>
+                    <option value="Elementos">Elementos</option>
+                    <option value="Robot salvaje">Robot salvaje</option>
+                </select>
+
+                <label>Fecha de función</label>
+                <input type="date" name="fecha"
+                value="{{ form_data.get('fecha', '') }}" required>
+
+                <label>Horario</label>
+                <select name="horario" required>
+                    <option value="">Selecciona un horario</option>
+                    <option value="14:00">14:00 horas</option>
+                    <option value="17:00">17:00 horas</option>
+                    <option value="20:00">20:00 horas</option>
+                </select>
+
+                <label>Cantidad de boletos</label>
+                <input type="number" name="boletos"
+                min="1" max="10"
+                value="{{ form_data.get('boletos', '') }}"
+                placeholder="Máximo 10 boletos" required>
+
+                <label>Tipo de sala</label>
+                <select name="sala" required>
+                    <option value="">Selecciona una sala</option>
+                    <option value="Tradicional">Tradicional</option>
+                    <option value="VIP">VIP</option>
+                    <option value="3D">3D</option>
+                </select>
+
+                <button type="submit" class="boton-reservar">
+                    CONFIRMAR RESERVACIÓN ✦
+                </button>
+
+            </form>
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+    <h2>CINE<span>FLIX</span> ✦</h2>
+    <p>Donde cada película se convierte en una experiencia.</p>
+    <p class="copyright">© 2026 CineFlix | Proyecto escolar Flask + SQLite</p>
+</footer>
+
+</body>
+</html>

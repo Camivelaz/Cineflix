@@ -1,0 +1,626 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #100d19;
+    color: #f8f5ff;
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+
+/* BARRA DE NAVEGACION */
+
+.barra {
+    background: #171322;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    border-bottom: 1px solid #332747;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 900;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+
+.logo span,
+footer span {
+    color: #c084fc;
+}
+
+.barra nav {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.barra nav a {
+    color: #c7bfd4;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.barra nav a:hover {
+    color: #d8a4ff;
+}
+
+/* PORTADA */
+
+.hero {
+    min-height: 470px;
+    padding: 80px 9%;
+    background:
+        radial-gradient(ellipse at 85% 40%, #633b8d 0%, transparent 40%),
+        linear-gradient(120deg, #1a1428, #241435 60%, #171020);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-contenido {
+    max-width: 600px;
+}
+
+.etiqueta {
+    color: #d7a5ff;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 7vw, 75px);
+    line-height: 1.08;
+    margin: 22px 0;
+    font-weight: 900;
+}
+
+.hero h1 span,
+.titulo-seccion h2 span,
+.reserva-info h2 span {
+    color: #c084fc;
+}
+
+.hero-contenido p {
+    color: #c7bfd4;
+    line-height: 1.8;
+    max-width: 440px;
+    margin-bottom: 30px;
+}
+
+.boton-principal {
+    display: inline-block;
+    background: linear-gradient(100deg, #9d55d9, #d26ba5);
+    color: white;
+    text-decoration: none;
+    padding: 14px 24px;
+    border-radius: 9px;
+    font-weight: 700;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.boton-principal:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px #b35fe766;
+}
+
+.hero-decoracion {
+    width: 280px;
+    height: 280px;
+    border: 1px solid #b77be866;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background: #ffffff08;
+    box-shadow: 0 0 70px #a45bdd33;
+}
+
+.circulo {
+    font-size: 100px;
+}
+
+.hero-decoracion span {
+    color: #d8a4ff;
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.hero-decoracion .texto-vertical {
+    position: absolute;
+    right: -70px;
+    transform: rotate(90deg);
+}
+
+/* SECCIONES */
+
+.seccion {
+    padding: 75px 8%;
+}
+
+.titulo-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.titulo-seccion h2 {
+    font-size: 35px;
+    margin-top: 12px;
+}
+
+.titulo-seccion > p {
+    color: #aaa0b8;
+    font-size: 13px;
+}
+
+/* CARTELERA */
+
+.peliculas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.pelicula-card {
+    transition: 0.3s;
+}
+
+.pelicula-card:hover {
+    transform: translateY(-8px);
+}
+
+.poster {
+    height: 285px;
+    border-radius: 15px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 25px #0005;
+}
+
+.poster-uno {
+    background: linear-gradient(150deg, #ee719e, #713d91);
+}
+
+.poster-dos {
+    background: linear-gradient(150deg, #f6ae48, #b33d32);
+}
+
+.poster-tres {
+    background: linear-gradient(150deg, #f17c42, #543c9d);
+}
+
+.poster-cuatro {
+    background: linear-gradient(150deg, #4f9e9a, #193b60);
+}
+
+.numero {
+    font-size: 12px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.emoji-poster {
+    font-size: 80px;
+    text-align: center;
+    filter: drop-shadow(0 8px 8px #0005);
+}
+
+.poster h3 {
+    font-size: 19px;
+    font-weight: 900;
+    text-shadow: 0 3px 8px #0008;
+}
+
+.tipo {
+    font-size: 9px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.pelicula-card > p {
+    color: #b9b0c5;
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 13px;
+}
+
+/* FORMULARIO */
+
+.reserva-seccion {
+    padding: 85px 9%;
+    background: #191425;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.reserva-info h2 {
+    font-size: clamp(35px, 5vw, 55px);
+    line-height: 1.2;
+    margin: 22px 0;
+}
+
+.reserva-info > p {
+    color: #bcb2c9;
+    line-height: 1.8;
+    max-width: 420px;
+    font-size: 14px;
+}
+
+.beneficio {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    align-items: center;
+}
+
+.beneficio > span {
+    color: #d28cff;
+    font-size: 28px;
+}
+
+.beneficio strong {
+    font-size: 14px;
+}
+
+.beneficio p {
+    color: #aaa0b8;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.formulario-card {
+    background: #241e32;
+    border: 1px solid #453453;
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 15px 45px #0005;
+}
+
+.formulario-card h2 {
+    font-size: 23px;
+}
+
+.subtitulo {
+    color: #a99eb8;
+    font-size: 12px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    font-size: 12px;
+    margin: 16px 0 8px;
+    color: #e5d8f3;
+    font-weight: 600;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 13px;
+    background: #171322;
+    border: 1px solid #51405f;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+    font-family: inherit;
+}
+
+form input:focus,
+form select:focus {
+    border-color: #c084fc;
+    box-shadow: 0 0 0 3px #c084fc22;
+}
+
+form select option {
+    background: #241e32;
+}
+
+form input::placeholder {
+    color: #80768d;
+}
+
+.boton-reservar {
+    width: 100%;
+    border: none;
+    padding: 16px;
+    margin-top: 25px;
+    background: linear-gradient(100deg, #9253d0, #d26ba5);
+    color: white;
+    border-radius: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.boton-reservar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 5px 20px #c084fc55;
+}
+
+/* MENSAJES */
+
+.alerta {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 16px;
+    border-radius: 9px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.success {
+    background: #1b4739;
+    color: #a7f3d0;
+}
+
+.error {
+    background: #572b3d;
+    color: #ffc4d4;
+}
+
+.info {
+    background: #30264e;
+    color: #ddc3ff;
+}
+
+/* LISTADO */
+
+.listado-principal {
+    min-height: 600px;
+    padding: 65px 7%;
+}
+
+.titulo-listado {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-listado h1 {
+    font-size: 40px;
+    margin: 15px 0;
+}
+
+.titulo-listado h1 span {
+    color: #c084fc;
+}
+
+.titulo-listado p {
+    color: #aaa0b8;
+    margin-bottom: 22px;
+    font-size: 13px;
+}
+
+.resumen {
+    background: #241e32;
+    border: 1px solid #453453;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.resumen > span {
+    font-size: 35px;
+}
+
+.resumen p {
+    color: #aaa0b8;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* TABLA */
+
+.tabla-contenedor {
+    overflow-x: auto;
+    background: #211a2e;
+    padding: 15px;
+    border: 1px solid #453453;
+    border-radius: 12px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 750px;
+}
+
+th {
+    background: #382849;
+    color: #e4c5ff;
+    padding: 16px 10px;
+    font-size: 11px;
+}
+
+td {
+    padding: 15px 10px;
+    border-bottom: 1px solid #40334d;
+    font-size: 12px;
+    color: #e3dce9;
+}
+
+tr:hover {
+    background: #30243e;
+}
+
+.boton-eliminar {
+    background: #9b4169;
+    color: white;
+    border: none;
+    padding: 9px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 11px;
+    margin: 0;
+    width: auto;
+}
+
+.boton-eliminar:hover {
+    background: #c14d7e;
+}
+
+/* SIN RESERVACIONES */
+
+.sin-reservas {
+    background: #211a2e;
+    border: 1px solid #453453;
+    padding: 55px 20px;
+    text-align: center;
+    border-radius: 16px;
+}
+
+.sin-reservas > span {
+    font-size: 65px;
+}
+
+.sin-reservas h2 {
+    margin: 15px;
+}
+
+.sin-reservas p {
+    color: #aaa0b8;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+/* PIE DE PAGINA */
+
+footer {
+    text-align: center;
+    background: #171322;
+    padding: 35px 15px;
+    border-top: 1px solid #332747;
+}
+
+footer h2 {
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+footer p {
+    color: #aaa0b8;
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+footer .copyright {
+    font-size: 10px;
+    color: #71687e;
+    margin-top: 22px;
+}
+
+/* ADAPTACION A CELULARES */
+
+@media (max-width: 850px) {
+
+    .peliculas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reserva-seccion {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .hero-decoracion {
+        width: 190px;
+        height: 190px;
+    }
+
+    .circulo {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 550px) {
+
+    .barra {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .barra nav {
+        justify-content: center;
+        gap: 13px;
+    }
+
+    .hero {
+        padding: 55px 7%;
+    }
+
+    .hero-decoracion {
+        display: none;
+    }
+
+    .seccion {
+        padding: 50px 6%;
+    }
+
+    .titulo-seccion {
+        align-items: start;
+        flex-direction: column;
+    }
+
+    .peliculas {
+        gap: 12px;
+    }
+
+    .poster {
+        height: 220px;
+        padding: 12px;
+    }
+
+    .emoji-poster {
+        font-size: 60px;
+    }
+
+    .poster h3 {
+        font-size: 14px;
+    }
+
+    .reserva-seccion {
+        padding: 55px 6%;
+    }
+
+    .formulario-card {
+        padding: 20px;
+    }
+
+    .titulo-listado h1 {
+        font-size: 30px;
+    }
+}

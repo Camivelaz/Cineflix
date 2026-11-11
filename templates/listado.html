@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineFlix | Mis reservaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+</head>
+
+<body>
+
+<header class="barra">
+    <a class="logo" href="{{ url_for('reserva') }}">CINE<span>FLIX</span> ✦</a>
+    <nav>
+        <a href="{{ url_for('reserva') }}">Inicio</a>
+        <a href="{{ url_for('reserva') }}#cartelera">Cartelera</a>
+        <a href="{{ url_for('reserva') }}#reservar">Reservar</a>
+        <a href="{{ url_for('listado') }}">Mis boletos</a>
+    </nav>
+</header>
+
+<main class="listado-principal">
+
+    <div class="titulo-listado">
+        <span class="etiqueta">TU EXPERIENCIA CINEFLIX</span>
+        <h1>Mis <span>reservaciones</span> 🎟️</h1>
+        <p>Aquí puedes consultar los boletos que has registrado.</p>
+        <a class="boton-principal" href="{{ url_for('reserva') }}">+ Nueva reservación</a>
+    </div>
+
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+        {% if mensajes %}
+            {% for categoria, texto in mensajes %}
+                <div class="alerta {{ categoria }}">{{ texto }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if reservaciones %}
+
+        <div class="resumen">
+            <span>🎬</span>
+            <div>
+                <strong>{{ reservaciones|length }} reservaciones</strong>
+                <p>Registros guardados en CineFlix</p>
+            </div>
+        </div>
+
+        <div class="tabla-contenedor">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Película</th>
+                        <th>Fecha</th>
+                        <th>Horario</th>
+                        <th>Boletos</th>
+                        <th>Sala</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for reserva in reservaciones %}
+                    <tr>
+                        <td>#{{ reserva.id }}</td>
+                        <td>{{ reserva.nombre }}</td>
+                        <td>{{ reserva.pelicula }}</td>
+                        <td>{{ reserva.fecha }}</td>
+                        <td>{{ reserva.horario }}</td>
+                        <td>{{ reserva.boletos }}</td>
+                        <td>{{ reserva.sala }}</td>
+                        <td>
+                            <form method="POST"
+                            action="{{ url_for('cancelar', reserva_id=reserva.id) }}">
+                                <button type="submit" class="boton-eliminar">
+                                    Cancelar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% else %}
+
+        <div class="sin-reservas">
+            <span>🎟️</span>
+            <h2>¡Aún no tienes boletos!</h2>
+            <p>Tu próxima aventura en el cine comienza con una reservación.</p>
+            <a class="boton-principal" href="{{ url_for('reserva') }}">Reservar ahora</a>
+        </div>
+
+    {% endif %}
+
+</main>
+
+<footer>
+    <h2>CINE<span>FLIX</span> ✦</h2>
+    <p>Gracias por elegirnos.</p>
+    <p class="copyright">© 2026 CineFlix</p>
+</footer>
+
+</body>
+</html>
